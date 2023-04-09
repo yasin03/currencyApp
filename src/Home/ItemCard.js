@@ -11,20 +11,28 @@ const ItemCard = (props) => {
   const loadData = () => {
     item === undefined ? setBuy("-") : setBuy(item[0]);
     item === undefined ? setSell("-") : setSell(item[2]);
-    item === undefined ? setChange("-") : setChange(item[3].slice(1));
+    if (item === undefined) {
+      setChange("-");
+    } else {
+      var x = item[3].slice(1);
+      setChange(parseFloat(x, 20));
+    }
   };
 
   useEffect(() => {
     loadData();
   }, []);
 
-  console.log(change);
+  console.log(typeof change + " " + change);
 
   return (
     <View
       style={[
         styles.container,
-        { backgroundColor: change < 0 ? "red" : "green" },
+        {
+          backgroundColor:
+            change === "-" ? "#e4e4e4" : change < 0 ? "#ffc0c0" : "#b6ff90",
+        },
       ]}
     >
       <Text style={styles.name}>{name}</Text>
@@ -39,8 +47,8 @@ export default ItemCard;
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f7f7f7",
-    padding: 10,
-    marginTop: 10,
+    padding: 12,
+    marginTop: 15,
     flexDirection: "row",
     borderColor: "#a4a4a4",
     borderWidth: 1,

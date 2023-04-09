@@ -27,7 +27,7 @@ const Home = observer(() => {
       currencyList.filter((item) => {
         if (item.name === "USD") setDolar(Object.values(item?.value));
         if (item.name === "EUR") setEuro(Object.values(item?.value));
-        if (item.name === "SEK") setSterlin(Object.values(item?.value));
+        if (item.name === "GBP") setSterlin(Object.values(item?.value));
         if (item.name === "gram-altin") setGram(Object.values(item?.value));
         if (item.name === "ceyrek-altin") setCeyrek(Object.values(item?.value));
         if (item.name === "Update_Date") setUpdateDate(item?.value);
@@ -44,6 +44,9 @@ const Home = observer(() => {
   if (!data) {
     return <Loading />;
   }
+  console.log("dolar -> " + dolar);
+  console.log("euro -> " + euro);
+  console.log("sterlin -> " + sterlin);
 
   return (
     <View style={styles.container}>
@@ -54,7 +57,7 @@ const Home = observer(() => {
       </View>
 
       <View>
-        <Text style={styles.updateDate}>{updateDate}</Text>
+        <Text style={styles.updateDate}>Last Update : {updateDate}</Text>
         <ItemCard name="US Dolar" item={dolar} />
         <ItemCard name="Euro" item={euro} />
         <ItemCard name="Sterlin" item={sterlin} />

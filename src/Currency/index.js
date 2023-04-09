@@ -16,7 +16,7 @@ const Currency = observer(() => {
       const currencyList = Object.entries(response.data).map(([key, value]) => {
         return { name: key, value };
       });
-      setCurrencies(currencyList);
+      setCurrencies(currencyList.slice(1, 67));
     } catch (error) {
       console.log(error);
     }
@@ -30,9 +30,8 @@ const Currency = observer(() => {
     return <Loading />;
   }
 
-
-  const renderItem = ({ item }) => (
-    <View style={styles.item}>
+  const renderItem = ({ item, index }) => (
+    <View style={styles.item} key={index}>
       <Text style={styles.itemText}>{item.name}</Text>
       <Text>{item.value.Buying ?? "-"}</Text>
       <Text>{item.value.Selling ?? "-"}</Text>
@@ -48,8 +47,7 @@ const Currency = observer(() => {
       </View>
       <FlatList
         data={currencies}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => item.key}
+        renderItem={(item, index) => renderItem(item, index)}
       />
     </View>
   );

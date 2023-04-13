@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { observer } from "mobx-react-lite";
 import Loading from "../Loading";
 import axios from "axios";
 import ItemCard from "./ItemCard";
 
-const Home = observer(() => {
+const Home = () => {
   const [data, setData] = useState([]);
-  const [currencies, setCurrencies] = useState();
   const [updateDate, setUpdateDate] = useState();
   const [dolar, setDolar] = useState();
   const [euro, setEuro] = useState();
@@ -23,7 +21,6 @@ const Home = observer(() => {
       const currencyList = Object.entries(response.data).map(([key, value]) => {
         return { name: key, value };
       });
-      setCurrencies(currencyList);
       currencyList.filter((item) => {
         if (item.name === "USD") setDolar(Object.values(item?.value));
         if (item.name === "EUR") setEuro(Object.values(item?.value));
@@ -44,10 +41,6 @@ const Home = observer(() => {
   if (!data) {
     return <Loading />;
   }
-  console.log("dolar -> " + dolar);
-  console.log("euro -> " + euro);
-  console.log("sterlin -> " + sterlin);
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -66,7 +59,7 @@ const Home = observer(() => {
       </View>
     </View>
   );
-});
+};
 
 const styles = StyleSheet.create({
   container: {

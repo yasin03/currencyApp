@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const ItemCard = (props) => {
-  const { name, item } = props;
-
+const GoldItem = (props) => {
+  const { item } = props;
   const [change, setChange] = useState();
   const [buy, setBuy] = useState();
   const [sell, setSell] = useState();
 
   const loadData = () => {
-    item === undefined ? setBuy("-") : setBuy(item[0]);
-    item === undefined ? setSell("-") : setSell(item[2]);
+    item === undefined ? setBuy("-") : setBuy(item.Buying);
+    item === undefined ? setSell("-") : setSell(item.Selling);
     if (item === undefined) {
       setChange("-");
     } else {
-      var x = item[3].slice(1);
+      var x = item.Change;
       setChange(parseFloat(x, 20));
     }
   };
@@ -33,14 +32,14 @@ const ItemCard = (props) => {
         },
       ]}
     >
-      <Text style={styles.name}>{name}</Text>
+      <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.buy}>{buy}</Text>
       <Text style={styles.sell}>{sell}</Text>
     </View>
   );
 };
 
-export default ItemCard;
+export default GoldItem;
 
 export const styles = StyleSheet.create({
   container: {

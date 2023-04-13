@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { observer } from "mobx-react-lite";
 import Loading from "../Loading";
 import axios from "axios";
 
-const Currency = observer(() => {
+const Currency = () => {
   const [data, setData] = useState([]);
   const [currencies, setCurrencies] = useState();
 
@@ -51,7 +50,7 @@ const Currency = observer(() => {
       />
     </View>
   );
-});
+};
 
 const styles = StyleSheet.create({
   container: {

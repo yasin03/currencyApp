@@ -64,9 +64,8 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10,
+    padding:25,
+    backgroundColor:"white",
   },
   header: {
     flexDirection: "row",

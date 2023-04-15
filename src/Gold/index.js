@@ -40,7 +40,6 @@ const Gold = () => {
     loadData();
   }, []);
 
-  console.log("Current Gold => " + data);
   if (!data) {
     return <Loading />;
   }
@@ -50,15 +49,15 @@ const Gold = () => {
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={styles.headerText}>Döviz Kurları</Text>
+            <Text style={styles.headerText}>Altın</Text>
             <Text style={styles.headerText}>Alış</Text>
             <Text style={styles.headerText}>Satış</Text>
           </View>
 
           <View>
             <Text style={styles.updateDate}>Last Update : {updateDate}</Text>
-            {data.map((item) => (
-              <GoldItem item={item} />
+            {data.map((item,index) => (
+              <GoldItem item={item} key={index}/>
             ))}
           </View>
         </View>
@@ -71,11 +70,12 @@ export default Gold;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin:10,
+    padding: 25,
+    backgroundColor:"white"
   },
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     marginBottom: 5,
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",

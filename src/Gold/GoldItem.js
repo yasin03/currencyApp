@@ -6,6 +6,7 @@ const GoldItem = (props) => {
   const [change, setChange] = useState();
   const [buy, setBuy] = useState();
   const [sell, setSell] = useState();
+  const [name, setName] = useState();
 
   const loadData = () => {
     item === undefined ? setBuy("-") : setBuy(item.Buying);
@@ -16,6 +17,22 @@ const GoldItem = (props) => {
       var x = item.Change;
       setChange(parseFloat(x, 20));
     }
+    if(item.name === "ons") setName("ONS");
+    if (item.name === "gram-altin") setName("Gram Altın");
+    if (item.name === "ceyrek-altin") setName("Çeyrek Altın");
+    if (item.name === "yarim-altin") setName("Yarım Altın");
+    if (item.name === "tam-altin") setName("Tam Altın");
+    if (item.name === "cumhuriyet-altini") setName("Cumh. Altını");
+    if (item.name === "ata-altin") setName("Ata Altın");
+    if (item.name === "resat-altin") setName("Reşat Altın");
+    if (item.name === "hamit-altin") setName("Hamit Altın");
+    if (item.name === "ikibucuk-altin") setName("2.5 Altın");
+    if (item.name === "gremse-altin") setName("Gremse Altın");
+    if (item.name === "besli-altin") setName("Beşli Altın");
+    if (item.name === "14-ayar-altin") setName("14 Ayar Altın");
+    if (item.name === "18-ayar-altin") setName("18 Ayar Altın");
+    if (item.name === "22-ayar-bilezik") setName("22 Ayar Bilezik");
+    if (item.name === "gumus") setName("Gümüş");
   };
 
   useEffect(() => {
@@ -32,7 +49,7 @@ const GoldItem = (props) => {
         },
       ]}
     >
-      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.name}>{name}</Text>
       <Text style={styles.buy}>{buy}</Text>
       <Text style={styles.sell}>{sell}</Text>
     </View>
@@ -68,12 +85,12 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     position: "absolute",
     marginTop: 12,
-    left: 170,
+    left: 160,
   },
   sell: {
     fontSize: 18,
     position: "absolute",
     marginTop: 12,
-    left: 260,
+    left: 250,
   },
 });

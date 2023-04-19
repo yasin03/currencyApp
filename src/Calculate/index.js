@@ -124,7 +124,7 @@ const Calculate = () => {
         activeUnderlineColor="orange"
       /> */}
 
-      <Text style={styles.result}>{result ? result : 0}</Text>
+      <Text style={styles.result}>{result ? result.toFixed(2) : 0}</Text>
     </View>
   );
 };
